@@ -7,7 +7,7 @@ export default function Peruibe({navigation}) {
     useEffect(
         ()=>{
              async function previsao(){
-              const response = await Api.get(`weather?array_limit=10&fields=only_results,temp,city_name,forecast,max,min,date,description&key=c58f4f95&city_name=Peruibe,SP`);
+              const response = await Api.get(`weather?key=c58f4f95&city_name=Campinas,SP`);
                 setDados(response.data.results.forecast);
             }
             previsao();
@@ -18,10 +18,10 @@ export default function Peruibe({navigation}) {
 
         <FlatList 
         data={dados}
-          renderItem={({item})=>{
+          renderItem={({setDados})=>{
             return(
               <View>
-                <Text style={styles.subtitle}>Data: {"date"}</Text>
+               <setDados />
               </View>
             )
           }} 
